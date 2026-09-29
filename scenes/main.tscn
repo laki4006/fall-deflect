@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://cha760o6jr23b"]
+
+[ext_resource type="PackedScene" uid="uid://csxnj1qsth3h2" path="res://scenes/Player.tscn" id="1_o5qli"]
+[ext_resource type="PackedScene" uid="uid://b62rpb8cvo5ov" path="res://scenes/spike.tscn" id="2_0wfyh"]
+[ext_resource type="Script" uid="uid://hmqgewncwlw2" path="res://scenes/draw_controller.gd" id="4_jyhfs"]
+[ext_resource type="Script" uid="uid://brmvk0kxpdc28" path="res://scenes/game_manager.gd" id="4_tbgi4"]
+
+[node name="Main" type="Node2D" unique_id=966780256]
+
+[node name="Player" parent="." unique_id=190832085 instance=ExtResource("1_o5qli")]
+position = Vector2(0, -400)
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1300240393]
+offset = Vector2(0, 300)
+zoom = Vector2(0.5, 0.5)
+position_smoothing_enabled = true
+position_smoothing_speed = 6.0
+
+[node name="Spike" parent="." unique_id=1441610214 instance=ExtResource("2_0wfyh")]
+position = Vector2(0, 900)
+
+[node name="DrawController" type="Node2D" parent="." unique_id=507880994]
+process_mode = 3
+script = ExtResource("4_jyhfs")
+max_width = 150.0
+
+[node name="TimerLayer" type="CanvasLayer" parent="DrawController" unique_id=1100148049]
+
+[node name="TimerBar" type="ProgressBar" parent="DrawController/TimerLayer" unique_id=438576969]
+custom_minimum_size = Vector2(250, 20)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -250.0
+offset_bottom = 27.0
+grow_horizontal = 0
+show_percentage = false
+
+[node name="GameManager" type="Node" parent="." unique_id=1221936547]
+script = ExtResource("4_tbgi4")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=2124013131]
+
+[node name="GameOverPanel" type="Panel" parent="UI" unique_id=369196763]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 69.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameOverLabel" type="Label" parent="UI/GameOverPanel" unique_id=764799069]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Game Over"
+
+[node name="RestartButton" type="Button" parent="UI/GameOverPanel" unique_id=940876006]
+process_mode = 3
+layout_mode = 0
+offset_left = 13.0
+offset_top = 14.0
+offset_right = 78.0
+offset_bottom = 45.0
+text = "Restart"
+
+[node name="LevelCompletePanel" type="Panel" parent="UI" unique_id=1492817849]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 107.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LevelCompleteLabel" type="Label" parent="UI/LevelCompletePanel" unique_id=118950193]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Level Complete!"
+
+[node name="NextButton" type="Button" parent="UI/LevelCompletePanel" unique_id=912505908]
+process_mode = 3
+layout_mode = 0
+offset_left = 16.0
+offset_top = 22.0
+offset_right = 106.0
+offset_bottom = 53.0
+text = "Next Level"
