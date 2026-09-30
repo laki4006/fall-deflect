@@ -15,6 +15,10 @@ run/main_scene="uid://cha760o6jr23b"
 config/features=PackedStringArray("4.7", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GameState="*uid://d0bmk27d5o57y"
+
 [display]
 
 window/size/viewport_width=720
@@ -22,6 +26,12 @@ window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 window/handheld/orientation=1
+
+[file_customization]
+
+folder_colors={
+"res://audio/": "orange"
+}
 
 [input_devices]
 

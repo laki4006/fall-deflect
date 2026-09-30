@@ -3,8 +3,6 @@ extends Node
 signal game_over
 signal level_complete
 
-@export var goal_y := 1400.0
-
 @onready var player: RigidBody2D = get_tree().get_first_node_in_group("player")
 @onready var game_over_panel: Panel = $"../UI/GameOverPanel"
 @onready var level_complete_panel: Panel = $"../UI/LevelCompletePanel"
@@ -17,13 +15,12 @@ func _ready() -> void:
 	$"../UI/GameOverPanel/RestartButton".pressed.connect(_on_restart_pressed)
 	$"../UI/LevelCompletePanel/NextButton".pressed.connect(_on_next_pressed)
 
-func _process(_delta: float) -> void:
+func _on_goal_reached() -> void:
 	if is_round_over:
 		return
-	if player.global_position.y >= goal_y:
-		is_round_over = true
-		level_complete_panel.show()
-		get_tree().paused = true
+	is_round_over = true
+	level_complete_panel.show()
+	get_tree().paused = true
 
 func _on_player_died() -> void:
 	if is_round_over:
@@ -38,4 +35,5 @@ func _on_restart_pressed() -> void:
 
 func _on_next_pressed() -> void:
 	get_tree().paused = false
+	GameState.current_level += 1
 	get_tree().reload_current_scene()

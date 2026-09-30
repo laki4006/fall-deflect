@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bf63mci17jjyy"]
+
+[ext_resource type="Script" uid="uid://frynp5lujaek" path="res://goal.gd" id="1_jbojv"]
+[ext_resource type="AudioStream" uid="uid://cw6i25ck3fojy" path="res://audio/win.ogg" id="2_sx1j4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fagyx"]
+size = Vector2(60, 60)
+
+[node name="Goal" type="Area2D" unique_id=820594154]
+script = ExtResource("1_jbojv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=574979657]
+shape = SubResource("RectangleShape2D_fagyx")
+
+[node name="WinSound" type="AudioStreamPlayer2D" parent="." unique_id=1190448266]
+process_mode = 3
+stream = ExtResource("2_sx1j4")

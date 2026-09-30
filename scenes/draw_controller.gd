@@ -17,6 +17,7 @@ var end_point := Vector2.ZERO
 var time_left := 0.0
 
 func _ready() -> void:
+	add_to_group("draw_controller")
 	timer_bar.max_value = max_draw_time
 	timer_bar.hide()
 

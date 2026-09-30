@@ -13,4 +13,9 @@ func _draw() -> void:
 	draw_rect(Rect2(-length / 2.0, -thickness / 2.0, length, thickness), Color(1.0, 0.85, 0.2))
 
 func consume() -> void:
+	$BounceSound.play()
+	set_deferred("monitoring", false)
+	collision_layer = 0
+	collision_mask = 0
+	await $BounceSound.finished
 	queue_free()

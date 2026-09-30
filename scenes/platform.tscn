@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://crh4l50tjrte0"]
 
 [ext_resource type="Script" uid="uid://c2460lv4ivwct" path="res://platform.gd" id="1_ba0x2"]
+[ext_resource type="AudioStream" uid="uid://dw4n8wa1ci7we" path="res://audio/bounce.ogg" id="2_nlgqw"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nlgqw"]
 friction = 0.0
@@ -11,3 +12,6 @@ physics_material_override = SubResource("PhysicsMaterial_nlgqw")
 script = ExtResource("1_ba0x2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=983302178]
+
+[node name="BounceSound" type="AudioStreamPlayer2D" parent="." unique_id=672701066]
+stream = ExtResource("2_nlgqw")

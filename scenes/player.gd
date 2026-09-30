@@ -13,6 +13,7 @@ func _draw() -> void:
 
 func _on_body_entered(body: Node) -> void:
 	if body.is_in_group("hazard"):
+		$DeathSound.play()
 		died.emit()
 	elif body.is_in_group("platform"):
 		body.consume()
