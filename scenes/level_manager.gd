@@ -10,6 +10,8 @@ var levels := [
 		"max_platforms": 1,
 		"max_width": 260.0,
 		"goal_position": Vector2(0, 1400),
+		"kill_y": 3000.0,
+
 	},
 	{
 		"start_position": Vector2(0, -400),
@@ -17,6 +19,7 @@ var levels := [
 		"max_platforms": 1,
 		"max_width": 220.0,
 		"goal_position": Vector2(100, 1700),
+		"kill_y": 3000.0,
 	},
 	{
 		"start_position": Vector2(0, -400),
@@ -24,6 +27,7 @@ var levels := [
 		"max_platforms": 2,
 		"max_width": 200.0,
 		"goal_position": Vector2(-100, 2000),
+		"kill_y": 3000.0,
 	},
 ]
 
@@ -45,6 +49,7 @@ func _ready() -> void:
 
 	var game_manager := get_tree().get_first_node_in_group("game_manager")
 	goal.reached.connect(game_manager._on_goal_reached)
+	game_manager.kill_y = data["kill_y"]
 
 	player.global_position = data["start_position"]
 

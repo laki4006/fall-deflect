@@ -8,12 +8,19 @@ signal level_complete
 @onready var level_complete_panel: Panel = $"../UI/LevelCompletePanel"
 
 var is_round_over := false
+var kill_y := 3000.0
 
 func _ready() -> void:
 	add_to_group("game_manager")
 	player.died.connect(_on_player_died)
 	$"../UI/GameOverPanel/RestartButton".pressed.connect(_on_restart_pressed)
 	$"../UI/LevelCompletePanel/NextButton".pressed.connect(_on_next_pressed)
+
+func _process(_delta: float) -> void:
+	if is_round_over:
+		return
+	if player.global_position.y >= kill_y:
+		player.die()
 
 func _on_goal_reached() -> void:
 	if is_round_over:
